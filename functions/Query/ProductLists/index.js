@@ -5,7 +5,7 @@ const {GraphQLList} = require("graphql");
 const {GraphQLObjectType} = require("graphql");
 const fakeDatabase = require("../../FakeDB");
 
-const currentOffset = 0;
+// const currentOffset = 0;
 
 const arrayOfProducts = new GraphQLObjectType({
   name: "ArrayOfProducts",
@@ -23,7 +23,7 @@ const arrayOfProducts = new GraphQLObjectType({
       type: GraphQLString,
     },
     rating: {
-      type: GraphQLInt,
+      type: GraphQLString,
     },
     product_image: {
       type: GraphQLString,
@@ -66,20 +66,15 @@ const GetProductLists = {
         data: fakeDatabase,
       };
     }
+    if (offset + limit -1 > fakeDatabase.length) {
+      return {
+        data: [],
+      };
+    }
     return {
-      data: [
-        {
-          product_id: 1,
-          product_price: 10000,
-          product_price_format: "Rp50.000",
-          product_name: "Payung Tokopedia",
-          rating: 5.0,
-          product_image: "s3.com",
-          product_slug: "payung tokopedia detail",
-        },
-      ],
-      offset,
-      hasNext: true,
+      data: fakeDatabase.filter((x, y)=>{
+        return y >= offset && y<= offset + limit - 1;
+      }),
     };
   },
 };
