@@ -5,11 +5,13 @@ const {GraphQLSchema} = require("graphql");
 const {GraphQLObjectType} = require("graphql");
 const cors = require("cors");
 const GetProductLists = require("./Query/ProductLists");
+const GetProductDetail = require("./Query/ProductDetail");
 
 const Query = new GraphQLObjectType({
   name: "Query",
   fields: {
     ProductLists: GetProductLists,
+    ProductDetail: GetProductDetail,
   },
 });
 
