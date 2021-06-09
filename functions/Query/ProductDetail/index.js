@@ -47,7 +47,7 @@ const GetProductDetail = {
         product_name: fakeDatabase[findProducts].product_name,
         product_description: "this is a product description",
         product_image: fakeDatabase[findProducts].product_image,
-        additional_product_image: [fakeDatabase[findProducts].product_image, "https://images.tokopedia.net/img/cache/300-square/VqbcmM/2021/4/1/cfaf69e2-48ba-4e96-96b2-a50037323a8f.jpg", "https://images.tokopedia.net/img/cache/250-square/VqbcmM/2021/3/30/998dcc9c-2529-411c-920a-fe5d2d866b21.jpg.webp?ect=4g"],
+        additional_product_image: [fakeDatabase[findProducts].product_image, "https://images.tokopedia.net/img/cache/300-square/VqbcmM/2021/4/1/cfaf69e2-48ba-4e96-96b2-a50037323a8f.jpg", "https://images.tokopedia.net/img/cache/250-square/VqbcmM/2021/3/30/998dcc9c-2529-411c-920a-fe5d2d866b21.jpg"],
       };
     }
     return {
