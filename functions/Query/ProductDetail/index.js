@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
-const {GraphQLInt, GraphQLString} = require("graphql");
-const {GraphQLObjectType} = require("graphql");
+const {GraphQLInt, GraphQLString, GraphQLObjectType, GraphQLList} = require("graphql");
 const fakeDatabase = require("../../FakeDB");
 
 const productDetailType = new GraphQLObjectType({
@@ -24,6 +23,10 @@ const productDetailType = new GraphQLObjectType({
     product_image: {
       type: GraphQLString,
     },
+    additional_product_image: {
+      // eslint-disable-next-line new-cap
+      type: GraphQLList(GraphQLString),
+    },
   },
 });
 
@@ -44,6 +47,7 @@ const GetProductDetail = {
         product_name: fakeDatabase[findProducts].product_name,
         product_description: "this is a product description",
         product_image: fakeDatabase[findProducts].product_image,
+        additional_product_image: [fakeDatabase[findProducts].product_image, "https://images.tokopedia.net/img/cache/300-square/VqbcmM/2021/4/1/cfaf69e2-48ba-4e96-96b2-a50037323a8f.jpg", "https://images.tokopedia.net/img/cache/250-square/VqbcmM/2021/3/30/998dcc9c-2529-411c-920a-fe5d2d866b21.jpg.webp?ect=4g"],
       };
     }
     return {
@@ -53,6 +57,7 @@ const GetProductDetail = {
       product_name: "",
       product_description: "",
       product_image: "",
+      additional_product_image: [],
     };
   },
 };
